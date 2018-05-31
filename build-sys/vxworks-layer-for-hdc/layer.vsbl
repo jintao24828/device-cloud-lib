@@ -1,0 +1,32 @@
+/* layer.vsbl file for Device Cloud container layer */
+/*
+ * Copyright (c) 2016-2018 Wind River Systems, Inc.
+ *
+ * The right to copy, distribute, modify, or otherwise make use
+ * of this software may be licensed only pursuant to the terms
+ * of an applicable Wind River license agreement.
+ */
+
+/*
+Modification history
+--------------------
+31may18,yat  updated version to 3.0.0.1
+05oct17,yat  updated version to 3.0.0.0
+23may17,dlk  updated version to 2.2.0.2
+21dec16,jdw  updated to version 2.2.0.1
+24aug16,jdw  created
+*/
+
+Layer HDC
+    {
+    SYNOPSIS         Device Cloud
+    HELP             This layer provides the Device Cloud library for VxWorks.
+    VERSION          3.0.0.1
+    VENDOR           Wind River
+    FEATURE          HDC
+    FEATURE_PROVIDES HDC3001
+    OPTIONAL         YES
+    DEFAULT          NO
+    DOC_BUILD        NO
+    RETROFIT         {REPLACE, 1.0.0.0 - 2.2.*.*, FEATURE_PROVIDES, HDC22}
+    }
