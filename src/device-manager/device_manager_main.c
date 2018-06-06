@@ -21,7 +21,8 @@
 #include "os.h"                       /* for os specific functions */
 #include "utilities/app_arg.h"        /* for struct app_arg & functions */
 #include "utilities/app_log.h"        /* for app_log function */
-#include "utilities/app_path.h"       /* for app_path_which function */
+#include "utilities/app_path.h"       /* for app_path_ which function */
+#include "utilities/app_config.h"     /* for app_config_ which function */
 
 #include "iot_build.h"
 #include "iot_json.h"                 /* for json */

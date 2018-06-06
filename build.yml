@@ -19,6 +19,7 @@ IOT_VENDOR: Wind River Systems
 IOT_PRODUCT: Device Cloud
 IOT_PRODUCT_SHORT: device-cloud
 IOT_LIBRARY_NAME: iot
+IOT_UTILITIES: iotutils
 IOT_DESCRIPTION_SUMMARY: Wind River Systems' Internet of Things Solution
 
 # Limits

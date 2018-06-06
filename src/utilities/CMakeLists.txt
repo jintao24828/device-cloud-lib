@@ -19,15 +19,29 @@ set( IOT_HDRS_C ${IOT_HDRS_C}
 	"app_arg.h"
 	"app_log.h"
 	"app_path.h"
+	"app_json.h"
+	"app_json_base.h"
+	"app_json_schema.h"
 )
 
 set( IOT_SRCS_C ${IOT_SRCS_C}
 	"app_arg.c"
 	"app_log.c"
 	"app_path.c"
+	"app_json_base.c"
+	"app_json_decode.c"
+	"app_json_encode.c"
+	"app_json_schema.c"
 )
 
 add_definitions( ${IOT_DEFS} )
+
+if( JSON_DEFINES )
+	foreach( JSON_DEFINE ${JSON_DEFINES} )
+		set( JSON_DEFINES_ "${JSON_DEFINES_} -D${JSON_DEFINE}=1" )
+	endforeach( JSON_DEFINE )
+	add_definitions( ${JSON_DEFINES_} )
+endif( JSON_DEFINES )
 
 option( IOT_LOG_TIMESTAMP "Option to add time stamps in the log" OFF )
 if( IOT_LOG_TIMESTAMP )

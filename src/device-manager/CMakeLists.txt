@@ -63,8 +63,8 @@ add_executable( ${TARGET}
 
 # Required libraries
 target_link_libraries( ${TARGET}
-	iotutils
 	iot
+	iotutils
 	${JSMN_LIBRARIES}
 	${OSAL_LIBRARIES}
 	${CMAKE_THREAD_LIBS_INIT}

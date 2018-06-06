@@ -14,21 +14,21 @@
  * under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied."
  */
-#ifndef IOT_JSON_SCHEMA_H
-#define IOT_JSON_SCHEMA_H
+#ifndef APP_JSON_SCHEMA_H
+#define APP_JSON_SCHEMA_H
 
-#include <iot_json.h>
+#include "app_json.h"
 
 #ifdef __cplusplus
 extern C {
 #endif
 
 /** @brief Represents a base JSON schema object validator */
-typedef struct iot_json_schema iot_json_schema_t;
+typedef struct app_json_schema app_json_schema_t;
 /** @brief Represents an item in a JSON schema object */
-typedef void iot_json_schema_item_t;
+typedef void app_json_schema_item_t;
 /** @brief Represents an JSON object within a schema iterating through items */
-typedef void iot_json_schema_object_iterator_t;
+typedef void app_json_schema_object_iterator_t;
 
 /**
  * @brief Validates the provided values with an array defined in a JSON schema object
@@ -44,16 +44,16 @@ typedef void iot_json_schema_object_iterator_t;
  * @retval IOT_FALSE                   value doesn't match or item isn't an
  *                                     array schema
  *
- * @see iot_json_schema_bool
- * @see iot_json_schema_integer
- * @see iot_json_schema_parse
- * @see iot_json_schema_number
- * @see iot_json_schema_real
- * @see iot_json_schema_string
+ * @see app_json_schema_bool
+ * @see app_json_schema_integer
+ * @see app_json_schema_parse
+ * @see app_json_schema_number
+ * @see app_json_schema_real
+ * @see app_json_schema_string
  */
-IOT_API IOT_SECTION iot_bool_t iot_json_schema_array(
-	const iot_json_schema_t *schema,
-	const iot_json_schema_item_t *item,
+IOT_API IOT_SECTION iot_bool_t app_json_schema_array(
+	const app_json_schema_t *schema,
+	const app_json_schema_item_t *item,
 	const char *value,
 	size_t value_len,
 	const char **error_msg );
@@ -72,16 +72,16 @@ IOT_API IOT_SECTION iot_bool_t iot_json_schema_array(
  * @retval IOT_FALSE                   value doesn't match or item isn't an
  *                                     array schema
  *
- * @see iot_json_schema_array
- * @see iot_json_schema_integer
- * @see iot_json_schema_parse
- * @see iot_json_schema_number
- * @see iot_json_schema_real
- * @see iot_json_schema_string
+ * @see app_json_schema_array
+ * @see app_json_schema_integer
+ * @see app_json_schema_parse
+ * @see app_json_schema_number
+ * @see app_json_schema_real
+ * @see app_json_schema_string
  */
-IOT_API IOT_SECTION iot_bool_t iot_json_schema_bool(
-	const iot_json_schema_t *schema,
-	const iot_json_schema_item_t *item,
+IOT_API IOT_SECTION iot_bool_t app_json_schema_bool(
+	const app_json_schema_t *schema,
+	const app_json_schema_item_t *item,
 	const char *value,
 	size_t value_len,
 	const char **error_msg );
@@ -97,9 +97,9 @@ IOT_API IOT_SECTION iot_bool_t iot_json_schema_bool(
  * @retval IOT_TRUE                    all dependencies have been met
  * @retval IOT_FALSE                   no all dependencies have been met
  */
-IOT_API IOT_SECTION iot_bool_t iot_json_schema_dependencies_achieved(
-	const iot_json_schema_t *schema,
-	const iot_json_schema_item_t *item,
+IOT_API IOT_SECTION iot_bool_t app_json_schema_dependencies_achieved(
+	const app_json_schema_t *schema,
+	const app_json_schema_item_t *item,
 	const char *const *keys_set,
 	size_t keys_set_len );
 
@@ -117,15 +117,15 @@ IOT_API IOT_SECTION iot_bool_t iot_json_schema_dependencies_achieved(
  * @retval IOT_STATUS_NOT_FOUND        item was not found in schema
  * @retval IOT_STATUS_SUCCESS          on success
  *
- * @see iot_json_schema_format
- * @see iot_json_schema_parse
- * @see iot_json_schema_required
- * @see iot_json_schema_title
- * @see iot_json_schema_type
+ * @see app_json_schema_format
+ * @see app_json_schema_parse
+ * @see app_json_schema_required
+ * @see app_json_schema_title
+ * @see app_json_schema_type
  */
-IOT_API IOT_SECTION iot_status_t iot_json_schema_description(
-	const iot_json_schema_t *schema,
-	const iot_json_schema_item_t *item,
+IOT_API IOT_SECTION iot_status_t app_json_schema_description(
+	const app_json_schema_t *schema,
+	const app_json_schema_item_t *item,
 	const char **description,
 	size_t *description_len );
 
@@ -143,15 +143,15 @@ IOT_API IOT_SECTION iot_status_t iot_json_schema_description(
  * @retval IOT_STATUS_NOT_FOUND        item was not found in schema
  * @retval IOT_STATUS_SUCCESS          on success
  *
- * @see iot_json_schema_description
- * @see iot_json_schema_parse
- * @see iot_json_schema_required
- * @see iot_json_schema_title
- * @see iot_json_schema_type
+ * @see app_json_schema_description
+ * @see app_json_schema_parse
+ * @see app_json_schema_required
+ * @see app_json_schema_title
+ * @see app_json_schema_type
  */
-IOT_API IOT_SECTION iot_status_t iot_json_schema_format(
-	const iot_json_schema_t *schema,
-	const iot_json_schema_item_t *item,
+IOT_API IOT_SECTION iot_status_t app_json_schema_format(
+	const app_json_schema_t *schema,
+	const app_json_schema_item_t *item,
 	const char **format,
 	size_t *format_len );
 
@@ -164,10 +164,10 @@ IOT_API IOT_SECTION iot_status_t iot_json_schema_format(
  *
  * @return a valid schema validator object
  *
- * @see iot_json_schema_parse
- * @see iot_json_schema_terminate
+ * @see app_json_schema_parse
+ * @see app_json_schema_terminate
  */
-IOT_API IOT_SECTION iot_json_schema_t *iot_json_schema_initialize(
+IOT_API IOT_SECTION app_json_schema_t *app_json_schema_initialize(
 	void *buf,
 	size_t len,
 	unsigned int flags );
@@ -185,16 +185,16 @@ IOT_API IOT_SECTION iot_json_schema_t *iot_json_schema_initialize(
  * @retval IOT_TRUE                    value matches schema for the integer
  * @retval IOT_FALSE                   value doesn't match or item isn't an
  *                                     array schema
- * @see iot_json_schema_array
- * @see iot_json_schema_bool
- * @see iot_json_schema_parse
- * @see iot_json_schema_number
- * @see iot_json_schema_real
- * @see iot_json_schema_string
+ * @see app_json_schema_array
+ * @see app_json_schema_bool
+ * @see app_json_schema_parse
+ * @see app_json_schema_number
+ * @see app_json_schema_real
+ * @see app_json_schema_string
  */
-IOT_API IOT_SECTION iot_bool_t iot_json_schema_integer(
-	const iot_json_schema_t *schema,
-	const iot_json_schema_item_t *item,
+IOT_API IOT_SECTION iot_bool_t app_json_schema_integer(
+	const app_json_schema_t *schema,
+	const app_json_schema_item_t *item,
 	const char *value,
 	size_t value_len,
 	const char **error_msg );
@@ -209,14 +209,14 @@ IOT_API IOT_SECTION iot_bool_t iot_json_schema_integer(
  *         or null if items doesn't point to an object or any parameter is
  *         invalid
  *
- * @see iot_json_schema_object_iterator_next
- * @see iot_json_schema_object_iterator_key
- * @see iot_json_schema_object_iterator_value
+ * @see app_json_schema_object_iterator_next
+ * @see app_json_schema_object_iterator_key
+ * @see app_json_schema_object_iterator_value
  */
-IOT_API IOT_SECTION iot_json_schema_object_iterator_t *
-	iot_json_schema_object_iterator(
-		iot_json_schema_t *schema,
-		iot_json_schema_item_t *item );
+IOT_API IOT_SECTION app_json_schema_object_iterator_t *
+	app_json_schema_object_iterator(
+		app_json_schema_t *schema,
+		app_json_schema_item_t *item );
 
 /**
  * @brief Returns the key for the item being pointed to by the object iterator
@@ -231,14 +231,14 @@ IOT_API IOT_SECTION iot_json_schema_object_iterator_t *
  * @retval IOT_STATUS_NOT_FOUND        item was not found in schema
  * @retval IOT_STATUS_SUCCESS          on success
  *
- * @see iot_json_schema_object_iterator
- * @see iot_json_schema_object_iterator_next
- * @see iot_json_schema_object_iterator_value
+ * @see app_json_schema_object_iterator
+ * @see app_json_schema_object_iterator_next
+ * @see app_json_schema_object_iterator_value
  */
-IOT_API IOT_SECTION iot_status_t iot_json_schema_object_iterator_key(
-	const iot_json_schema_t *schema,
-	const iot_json_schema_item_t *item,
-	iot_json_schema_object_iterator_t *iter,
+IOT_API IOT_SECTION iot_status_t app_json_schema_object_iterator_key(
+	const app_json_schema_t *schema,
+	const app_json_schema_item_t *item,
+	app_json_schema_object_iterator_t *iter,
 	const char **key,
 	size_t *key_len );
 
@@ -252,15 +252,15 @@ IOT_API IOT_SECTION iot_status_t iot_json_schema_object_iterator_key(
  * @return an iterator pointing the next item in an object defition or NULL if
  *         it is at the end of the object definition
  *
- * @see iot_json_schema_object_iterator
- * @see iot_json_schema_object_iterator_key
- * @see iot_json_schema_object_iterator_value
+ * @see app_json_schema_object_iterator
+ * @see app_json_schema_object_iterator_key
+ * @see app_json_schema_object_iterator_value
  */
-IOT_API IOT_SECTION iot_json_schema_object_iterator_t *
-	iot_json_schema_object_iterator_next(
-		iot_json_schema_t *schema,
-		iot_json_schema_item_t *item,
-		iot_json_schema_object_iterator_t *iter );
+IOT_API IOT_SECTION app_json_schema_object_iterator_t *
+	app_json_schema_object_iterator_next(
+		app_json_schema_t *schema,
+		app_json_schema_item_t *item,
+		app_json_schema_object_iterator_t *iter );
 
 /**
  * @brief Returns the value for the item being pointed to by the object iterator
@@ -275,15 +275,15 @@ IOT_API IOT_SECTION iot_json_schema_object_iterator_t *
  * @retval IOT_STATUS_NOT_FOUND        item was not found in schema
  * @retval IOT_STATUS_SUCCESS          on success
  *
- * @see iot_json_schema_object_iterator
- * @see iot_json_schema_object_iterator_key
- * @see iot_json_schema_object_iterator_next
+ * @see app_json_schema_object_iterator
+ * @see app_json_schema_object_iterator_key
+ * @see app_json_schema_object_iterator_next
  */
-IOT_API IOT_SECTION iot_status_t iot_json_schema_object_iterator_value(
-	const iot_json_schema_t *schema,
-	const iot_json_schema_item_t *item,
-	iot_json_schema_object_iterator_t *iter,
-	iot_json_schema_item_t **out );
+IOT_API IOT_SECTION iot_status_t app_json_schema_object_iterator_value(
+	const app_json_schema_t *schema,
+	const app_json_schema_item_t *item,
+	app_json_schema_object_iterator_t *iter,
+	app_json_schema_item_t **out );
 
 /**
  * @brief Parses a given JSON string for a schema and returns the root element
@@ -305,13 +305,13 @@ IOT_API IOT_SECTION iot_status_t iot_json_schema_object_iterator_value(
  * @retval IOT_STATUS_PARSE_ERROR      invalid JSON schema object passed to function
  * @retval IOT_STATUS_SUCCESS          on success
  *
- * @see iot_json_schema_initialize
+ * @see app_json_schema_initialize
  */
-IOT_API IOT_SECTION iot_status_t iot_json_schema_parse(
-	iot_json_schema_t *schema,
+IOT_API IOT_SECTION iot_status_t app_json_schema_parse(
+	app_json_schema_t *schema,
 	const char *js,
 	size_t len,
-	iot_json_schema_item_t **root,
+	app_json_schema_item_t **root,
 	char *error,
 	size_t error_len );
 
@@ -329,16 +329,16 @@ IOT_API IOT_SECTION iot_status_t iot_json_schema_parse(
  * @retval IOT_FALSE                   value doesn't match or item isn't an
  *                                     array schema
  *
- * @see iot_json_schema_array
- * @see iot_json_schema_bool
- * @see iot_json_schema_integer
- * @see iot_json_schema_parse
- * @see iot_json_schema_real
- * @see iot_json_schema_string
+ * @see app_json_schema_array
+ * @see app_json_schema_bool
+ * @see app_json_schema_integer
+ * @see app_json_schema_parse
+ * @see app_json_schema_real
+ * @see app_json_schema_string
  */
-IOT_API IOT_SECTION iot_bool_t iot_json_schema_number(
-	const iot_json_schema_t *schema,
-	const iot_json_schema_item_t *item,
+IOT_API IOT_SECTION iot_bool_t app_json_schema_number(
+	const app_json_schema_t *schema,
+	const app_json_schema_item_t *item,
 	const char *value,
 	size_t value_len,
 	const char **error_msg );
@@ -361,9 +361,9 @@ IOT_API IOT_SECTION iot_bool_t iot_json_schema_number(
  *
  *
  */
-IOT_API IOT_SECTION iot_bool_t iot_json_schema_real(
-	const iot_json_schema_t *schema,
-	const iot_json_schema_item_t *item,
+IOT_API IOT_SECTION iot_bool_t app_json_schema_real(
+	const app_json_schema_t *schema,
+	const app_json_schema_item_t *item,
 	const char *value,
 	size_t value_len,
 	const char **error_msg );
@@ -377,15 +377,15 @@ IOT_API IOT_SECTION iot_bool_t iot_json_schema_real(
  * @retval IOT_TRUE                    the required flag is set
  * @retval IOT_FALSE                   the required flag is not set
  *
- * @see iot_json_schema_description
- * @see iot_json_schema_format
- * @see iot_json_schema_parse
- * @see iot_json_schema_type
- * @see iot_json_schema_title
+ * @see app_json_schema_description
+ * @see app_json_schema_format
+ * @see app_json_schema_parse
+ * @see app_json_schema_type
+ * @see app_json_schema_title
  */
-IOT_API IOT_SECTION iot_bool_t iot_json_schema_required(
-	const iot_json_schema_t *schema,
-	const iot_json_schema_item_t *item );
+IOT_API IOT_SECTION iot_bool_t app_json_schema_required(
+	const app_json_schema_t *schema,
+	const app_json_schema_item_t *item );
 
 /**
  * @brief Validates the provided values with an array defined in a JSON schema object
@@ -401,16 +401,16 @@ IOT_API IOT_SECTION iot_bool_t iot_json_schema_required(
  * @retval IOT_FALSE                   value doesn't match or item isn't an
  *                                     array schema
  *
- * @see iot_json_schema_array
- * @see iot_json_schema_bool
- * @see iot_json_schema_integer
- * @see iot_json_schema_parse
- * @see iot_json_schema_number
- * @see iot_json_schema_real
+ * @see app_json_schema_array
+ * @see app_json_schema_bool
+ * @see app_json_schema_integer
+ * @see app_json_schema_parse
+ * @see app_json_schema_number
+ * @see app_json_schema_real
  */
-IOT_API IOT_SECTION iot_bool_t iot_json_schema_string(
-	iot_json_schema_t *schema,
-	const iot_json_schema_item_t *item,
+IOT_API IOT_SECTION iot_bool_t app_json_schema_string(
+	app_json_schema_t *schema,
+	const app_json_schema_item_t *item,
 	const char *value,
 	size_t value_len,
 	const char **error_msg );
@@ -429,15 +429,15 @@ IOT_API IOT_SECTION iot_bool_t iot_json_schema_string(
  * @retval IOT_STATUS_NOT_FOUND        item was not found in schema
  * @retval IOT_STATUS_SUCCESS          on success
  *
- * @see iot_json_schema_description
- * @see iot_json_schema_format
- * @see iot_json_schema_parse
- * @see iot_json_schema_required
- * @see iot_json_schema_type
+ * @see app_json_schema_description
+ * @see app_json_schema_format
+ * @see app_json_schema_parse
+ * @see app_json_schema_required
+ * @see app_json_schema_type
  */
-IOT_API IOT_SECTION iot_status_t iot_json_schema_title(
-	const iot_json_schema_t *schema,
-	const iot_json_schema_item_t *item,
+IOT_API IOT_SECTION iot_status_t app_json_schema_title(
+	const app_json_schema_t *schema,
+	const app_json_schema_item_t *item,
 	const char **title,
 	size_t *title_len );
 
@@ -446,10 +446,10 @@ IOT_API IOT_SECTION iot_status_t iot_json_schema_title(
  *
  * @param[in]      schema              JSON schema object to free memory for
  *
- * @see iot_json_schema_initialize
+ * @see app_json_schema_initialize
  */
-IOT_API IOT_SECTION void iot_json_schema_terminate(
-	iot_json_schema_t *schema );
+IOT_API IOT_SECTION void app_json_schema_terminate(
+	app_json_schema_t *schema );
 
 /**
  * @brief Returns type of item being pointed to withn a schema
@@ -457,24 +457,24 @@ IOT_API IOT_SECTION void iot_json_schema_terminate(
  * @param[in]      schema              JSON schema object containing details
  * @param[in]      item                item in the schema
  *
- * @retval IOT_JSON_TYPE_NULL          not a valid schema object
- * @retval IOT_JSON_TYPE_ARRAY         array definition in the schema
- * @retval IOT_JSON_TYPE_OBJECT        object definition in the schema
- * @retval IOT_JSON_TYPE_BOOL          boolean definition in the schema
- * @retval IOT_JSON_TYPE_INTEGER       integer definition in the schema
- * @retval IOT_JSON_TYPE_REAL          (real) number definition in the schema
- * @retval IOT_JSON_TYPE_STRING        string definition in the schema
+ * @retval APP_JSON_TYPE_NULL          not a valid schema object
+ * @retval APP_JSON_TYPE_ARRAY         array definition in the schema
+ * @retval APP_JSON_TYPE_OBJECT        object definition in the schema
+ * @retval APP_JSON_TYPE_BOOL          boolean definition in the schema
+ * @retval APP_JSON_TYPE_INTEGER       integer definition in the schema
+ * @retval APP_JSON_TYPE_REAL          (real) number definition in the schema
+ * @retval APP_JSON_TYPE_STRING        string definition in the schema
  *
- * @see iot_json_schema_parse
- * @see iot_json_schema_required
- * @see iot_json_type
+ * @see app_json_schema_parse
+ * @see app_json_schema_required
+ * @see app_json_type
  */
-IOT_API IOT_SECTION iot_json_type_t iot_json_schema_type(
-	const iot_json_schema_t *schema,
-	const iot_json_schema_item_t *item );
+IOT_API IOT_SECTION app_json_type_t app_json_schema_type(
+	const app_json_schema_t *schema,
+	const app_json_schema_item_t *item );
 
 #ifdef __cplusplus
 };
 #endif
 
-#endif /* ifndef IOT_JSON_SCHEMA_H */
+#endif /* ifndef APP_JSON_SCHEMA_H */

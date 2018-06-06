@@ -65,6 +65,42 @@ iot_status_t app_path_create(
 	return result;
 }
 
+size_t app_path_directory_name_get(
+	iot_dir_type_t type,
+	char *buf,
+	size_t buf_len )
+{
+	size_t result = 0u;
+	const char *dir_fmt = NULL;
+	switch( type )
+	{
+		case IOT_DIR_CONFIG:
+			dir_fmt = IOT_DEFAULT_DIR_CONFIG;
+			break;
+		case IOT_DIR_RUNTIME:
+			dir_fmt = IOT_DEFAULT_DIR_RUNTIME;
+			break;
+		default:
+			result = IOT_STATUS_BAD_PARAMETER;
+			break;
+	}
+
+	if ( dir_fmt )
+	{
+		result = os_strlen( dir_fmt );
+		if ( buf && buf_len > result )
+		{
+			os_strncpy( buf, dir_fmt, buf_len - 1u );
+			/** @todo expand environment variables in
+			 * path here */
+			buf[ buf_len - 1u ] = '\0';
+		}
+		else if ( buf )
+			result = 0u; /* buffer too small */
+	}
+	return result;
+}
+
 size_t app_path_make_absolute( char *path, size_t path_max,
 	iot_bool_t relative_to_install )
 {

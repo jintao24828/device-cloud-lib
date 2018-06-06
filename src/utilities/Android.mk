@@ -22,8 +22,13 @@ iotutils_c_includes := \
 
 iotutils_src_files := \
     app_arg.c \
+	app_config.c \
     app_log.c \
     app_path.c \
+	app_json_base.c \
+	app_json_decode.c \
+	app_json_encode.c \
+	app_json_schema.c \
 
 include $(CLEAR_VARS)
 LOCAL_C_INCLUDES := $(iotutils_c_includes)

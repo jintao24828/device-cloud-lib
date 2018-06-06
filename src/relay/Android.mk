@@ -26,7 +26,7 @@ LOCAL_C_INCLUDES := \
 	external/openssl/include \
 
 LOCAL_CFLAGS += ${EXTRA_CFLAGS}
-LOCAL_SHARED_LIBRARIES := libiot libcrypto libssl libz libdl libext2_uuid
+LOCAL_SHARED_LIBRARIES := libcrypto libssl libz libdl libext2_uuid
 LOCAL_STATIC_LIBRARIES := libiotutils libosal libandroidifaddrs libwebsockets
 
 LOCAL_MODULE := iot-relay
