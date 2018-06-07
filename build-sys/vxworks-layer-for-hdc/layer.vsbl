@@ -10,7 +10,7 @@
 /*
 Modification history
 --------------------
-31may18,yat  updated version to 3.0.0.1
+31may18,yat  updated version to 3.0.0.10
 05oct17,yat  updated version to 3.0.0.0
 23may17,dlk  updated version to 2.2.0.2
 21dec16,jdw  updated to version 2.2.0.1
@@ -21,10 +21,10 @@ Layer HDC
     {
     SYNOPSIS         Device Cloud
     HELP             This layer provides the Device Cloud library for VxWorks.
-    VERSION          3.0.0.1
+    VERSION          3.0.0.10
     VENDOR           Wind River
     FEATURE          HDC
-    FEATURE_PROVIDES HDC3001
+    FEATURE_PROVIDES HDC30010
     OPTIONAL         YES
     DEFAULT          NO
     DOC_BUILD        NO
