@@ -17,6 +17,7 @@ set( TARGET_DESCRIPTION "${IOT_RELAY_DESCRIPTION}" )
 
 find_package( OpenSSL )
 find_package( Threads )
+find_package( Jsmn REQUIRED )
 
 # Header files
 set( IOT_HDRS_C ${IOT_HDRS_C}
@@ -53,6 +54,7 @@ add_executable( ${TARGET}
 # Required libraries
 target_link_libraries( ${TARGET}
 	iotutils
+	${JSON_LIBRARIES}
 	${WEBSOCKET_LIBRARIES}
 	${OPENSSL_LIBRARIES}
 	${OSAL_LIBRARIES}

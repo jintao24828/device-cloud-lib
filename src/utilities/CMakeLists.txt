@@ -17,6 +17,7 @@ set( TARGET "iotutils" )
 find_package( Jsmn REQUIRED )
 set( IOT_HDRS_C ${IOT_HDRS_C}
 	"app_arg.h"
+	"app_config.h"
 	"app_log.h"
 	"app_path.h"
 	"app_json.h"
@@ -26,6 +27,7 @@ set( IOT_HDRS_C ${IOT_HDRS_C}
 
 set( IOT_SRCS_C ${IOT_SRCS_C}
 	"app_arg.c"
+	"app_config.c"
 	"app_log.c"
 	"app_path.c"
 	"app_json_base.c"

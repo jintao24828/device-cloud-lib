@@ -14,8 +14,8 @@
 #include "app_config.h"
 
 #include <os.h>				/* for os_* functions */
-#include "app_path.h"		/* for app_path_* functions */
 #include "app_json.h"		/* for app_json_* functions */
+#include "app_path.h"		/* for app_path_* functions */
 #include "../public/iot_json.h"		/* for iot_json_* types */
 #include "../api/shared/iot_types.h"	/* for os_* functions */
 
@@ -29,6 +29,7 @@ struct app_config
 	const app_json_array_iterator_t *json_iterator;
 };
 
+/*FIXME*/
 /**
  * @brief Helper function to get the path to proxy configuration file
  *
@@ -39,8 +40,8 @@ struct app_config
  * @retval IOT_STATUS_FAILURE          on failure
  * @retval IOT_STATUS_SUCCESS          on success
  */
-static iot_status_t app_config_get_proxy_file_path(
-char *file_path, size_t len );
+/* static iot_status_t app_config_get_proxy_file_path( */
+/* 	char *file_path, size_t len ); */
 
 iot_status_t app_config_close( struct app_config *config )
 {
@@ -54,17 +55,16 @@ iot_status_t app_config_close( struct app_config *config )
 	return result;
 }
 
-struct app_config *app_config_open(/* iot_t *iot_lib,*/ const char *file_path )
+struct app_config *app_config_open( const char *file_path )
 {
-	// TODO: We only use iot_lib for logging purposes.
-	// should we remove it to reduce dependencies?
+	/* TODO replace IOT_LOG with app_config_log, or use shared logging function */
 	char config_file[ PATH_MAX + 1u ];
 	iot_bool_t file_found = IOT_FALSE;
 	unsigned int i;
 	const char *paths[] = { file_path, NULL, NULL, NULL };
 	struct app_config *result = NULL;
 	char config_dir[ PATH_MAX + 1u ];
-	/* char runtime_dir[ PATH_MAX + 1u ]; */
+	char runtime_dir[ PATH_MAX + 1u ];
 	char current_dir[ PATH_MAX + 1u ];
 	char exe_dir[ PATH_MAX + 1u ];
 
@@ -75,7 +75,7 @@ struct app_config *app_config_open(/* iot_t *iot_lib,*/ const char *file_path )
 	const app_json_item_t *json_root = NULL; /* root json object */
 	char err_msg[1024u];
 	size_t err_len = 1024u ;
-	os_file_t fd;
+	os_file_t fd = NULL;
 
 	/* locate the config file */
 	config_file[0] = '\0';
@@ -85,11 +85,11 @@ struct app_config *app_config_open(/* iot_t *iot_lib,*/ const char *file_path )
 		 * config_dir, runtime_dir, current_dir and exe_dir
 		 * for default configuration file */
 		if ( app_path_directory_name_get( IOT_DIR_CONFIG,
-				config_dir, PATH_MAX ) == IOT_STATUS_SUCCESS && config_dir[0] != '\0' )
+				config_dir, PATH_MAX ) > 0u && config_dir[0] != '\0' )
 			paths[0u] = config_dir;
-		/* if ( app_path_runtime_directory_get( runtime_dir, PATH_MAX ) */ /*FIXME*/
-		/* 	== IOT_STATUS_SUCCESS && runtime_dir[0] != '\0' ) */
-			/* paths[1u] = runtime_dir; */
+		if ( app_path_directory_name_get( IOT_DIR_RUNTIME,
+				runtime_dir, PATH_MAX ) >0u && runtime_dir[0] != '\0' )
+			paths[1u] = runtime_dir;
 		if ( os_directory_current( current_dir, PATH_MAX )
 			== OS_STATUS_SUCCESS && current_dir[0] != '\0' )
 			paths[2u] = current_dir;
@@ -348,6 +348,9 @@ iot_status_t app_config_read_integer( struct app_config *config,
 	return result;
 }
 
+/*FIXME*/
+/*
+
 iot_status_t app_config_get_proxy_file_path(
 	char *path, size_t size )
 {
@@ -460,4 +463,5 @@ iot_status_t app_config_read_proxy_file(
 	}
 	return result;
 }
+*/
 

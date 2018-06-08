@@ -20,7 +20,6 @@
 #include "control_config.h"
 #include "api/shared/iot_types.h"   /* for iot_host structure */
 #include "utilities/app_arg.h"
-#include "utilities/app_path.h"
 #include "iot_build.h"
 
 #include <os.h>
